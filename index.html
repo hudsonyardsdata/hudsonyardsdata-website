@@ -19,9 +19,6 @@
             <li><a href="get-started.html">Get Started</a></li>
                 </ul>
             </nav>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                <span id="theme-icon">🌙</span>
-            </button>
         </div>
     </header>
     <section class="hero">
@@ -109,51 +106,7 @@
         <div class="footer-container">
             <p>&copy; 2025 Hudson Yards Data. All rights reserved.</p>
             <p>Data Science and AI Consulting</p>
-            <p><a href="software-sonnets.html">🎵</a></p>
         </div>
     </footer>
-
-    <script>
-        // Dark mode toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        // Check for saved theme preference or default to system preference
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            body.classList.add(currentTheme);
-            updateIcon(currentTheme);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            // Remove both classes first
-            body.classList.remove('light-mode', 'dark-mode');
-
-            // Determine current effective theme
-            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const hasLightClass = body.classList.contains('light-mode');
-            const hasDarkClass = body.classList.contains('dark-mode');
-
-            // Toggle theme
-            if (hasDarkClass || (!hasLightClass && isDark)) {
-                body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light-mode');
-                updateIcon('light-mode');
-            } else {
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-                updateIcon('dark-mode');
-            }
-        });
-
-        function updateIcon(theme) {
-            if (theme === 'dark-mode') {
-                themeIcon.textContent = '☀️';
-            } else {
-                themeIcon.textContent = '🌙';
-            }
-        }
-    </script>
 </body>
 </html>
